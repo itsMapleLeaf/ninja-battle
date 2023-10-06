@@ -1,3 +1,5 @@
+require 'lib.love-compat'
+
 Object    = require 'lib.classic'
 gamestate = require 'lib.gamestate'
 bump      = require 'lib.bump'
@@ -22,24 +24,6 @@ require 'objects.Countdown'
 require 'states.Gameplay'
 require 'states.Menu'
 require 'states.Paused'
-
--- compatibility with new love colors
-local setColor = love.graphics.setColor
----@diagnostic disable-next-line: duplicate-set-field
-function love.graphics.setColor(r, g, b, a)
-	if type(r) == 'table' then
-		setColor(r[1] / 255, r[2] / 255, r[3] / 255, (r[4] or 255) / 255)
-	else
-		setColor(r / 255, g / 255, b / 255, (a or 255) / 255)
-	end
-end
-
-local getColor = love.graphics.getColor
----@diagnostic disable-next-line: duplicate-set-field
-function love.graphics.getColor()
-	local r, g, b, a = getColor()
-	return { r * 255, g * 255, b * 255, a * 255 }
-end
 
 function love.load()
 	love.graphics.setDefaultFilter('linear', 'nearest')
