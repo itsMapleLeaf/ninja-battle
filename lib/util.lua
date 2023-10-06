@@ -1,3 +1,5 @@
+local inspect = require('lib.inspect')
+
 local util = {}
 
 function util.multiple(n, mult)
@@ -62,10 +64,8 @@ function util.distance(x1, y1, x2, y2)
 	return ((x2 - x1) ^ 2 + (y2 - y1) ^ 2) ^ 0.5
 end
 
-util.inspect = require('lib.inspect')
-
-function util.print(...)
-	print(util.inspect(...))
+function util.print(obj)
+	print(inspect.inspect(obj))
 end
 
 function util.filter(items, func)
