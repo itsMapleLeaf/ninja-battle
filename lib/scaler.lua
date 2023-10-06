@@ -21,6 +21,7 @@ function scaler.getDimensions()
 	return scaler.getWidth(), scaler.getHeight()
 end
 
+---@param func fun(): nil
 function scaler.draw(func)
 	love.graphics.push()
 	love.graphics.scale(currentScale)
