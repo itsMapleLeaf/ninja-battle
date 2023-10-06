@@ -15,6 +15,11 @@ function util.interpolate(value, target, delta)
 	return value + (target - value) * util.clamp(0, delta, 1)
 end
 
+---@generic Input
+---@generic Args
+---@param items Input[]
+---@param func string | fun(item: Input, ...: Args): nil
+---@param ... Args
 function util.map(items, func, ...)
 	if type(func) == 'string' then
 		for i = 1, #items do
